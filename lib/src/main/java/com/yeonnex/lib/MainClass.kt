@@ -15,7 +15,9 @@ class MainClass {
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
 fun main(args: Array<String>){
-    example09()
+    example11()
+//    example10()
+//    example09()
 //    example08()
 //    example07()
 //    example06()
@@ -23,6 +25,15 @@ fun main(args: Array<String>){
 //    example00()
 }
 
+// 늦은 초기화 lateinit
+// lateinit 변수가 초기화되었는지 확인하려면 해당 변수의 isInitialized 속성을 검사
+private fun example11(){
+    lateinit var myName: String
+
+//    if(::myName.isInitalized){ // 초기화 검사. 아직 지원이 안되고 있음. 문법상으로는 있음
+//        // 코드
+//    }
+}
 private fun example00() {
     println(1 + 2)
     println(1 + 2)
@@ -75,6 +86,18 @@ private fun example07() {
     val length = username!!.length
 }
 
+// 엘비스 연산자 (?:) : null값을 검사하는 if-else 문
+private fun example10(){
+    val myname: String = "Hello"
+    if(myname != null){
+        println(myname)
+    }else{
+        println("String is null")
+    }
+
+    println(myname ?: "String is null") // 코틀린스러운 코드, 위 if-else 문을 짧게 표현 가능하게
+    // 근데 이렇게 짜지는 말자.. 그냥 읽을수만 있게끔
+}
 // null 가능 타입과 let 함수
 // null 가능 타입의 객체에 대해 호출하면 null 가능 타입을 it 라는 null  불가능 변수로 변환
 private fun example09(){
