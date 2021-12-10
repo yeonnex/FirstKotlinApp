@@ -15,7 +15,9 @@ class MainClass {
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
 fun main(args: Array<String>){
-    example06()
+    example08()
+//    example07()
+//    example06()
 //    example05()
 //    example00()
 }
@@ -55,4 +57,19 @@ private fun example06(){
     if (userName != null){
         println(userName.length) // 이렇게 사용해주어야 함!
     }
+}
+
+// null 가능 변수는 함수 호출이나 참조 시에도 보통 방법으로 사용할 수 없다
+// null 이 아니라는 것을 함수 호출 전에 검사하는 코드가 필요
+// 또는 안전호출 연산자(?)를 사용
+private fun example08() {
+    var username: String? = null
+    val length = username?.length
+}
+
+// Not-null assertion !!
+// null 가능 타입의 모든 제약을 받지 않으나 런타임 시에 null 포인터 예외 발생 가능
+private fun example07() {
+    var username: String? = null
+    val length = username!!.length
 }
