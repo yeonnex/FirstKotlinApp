@@ -15,8 +15,9 @@ class MainClass {
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
 fun main(args: Array<String>){
-    example05()
-    //example00()
+    example06()
+//    example05()
+//    example00()
 }
 
 private fun example00() {
@@ -40,4 +41,18 @@ private fun example05() {
     }
     println(bookTitle)
     // bookTitle = "iOS App" Error
+}
+
+// null 불가능 타입에 null 가능 타입을 넣으면 컴파일 에러
+// null 여부 확인 필요
+private fun example06(){
+    // val userName: String = null // 에러남 기본적으로 코틀린은 null 값이 못들어오게 함
+
+    val userName: String? = "Hello"
+//    println(userName.length) // 이렇게도 사용할 수 없음
+
+    // 코틀린은 방어적인 코드를 문법적으로 쓸 수 있게끔 강제함
+    if (userName != null){
+        println(userName.length) // 이렇게 사용해주어야 함!
+    }
 }
