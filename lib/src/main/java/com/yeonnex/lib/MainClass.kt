@@ -15,7 +15,8 @@ class MainClass {
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
 fun main(args: Array<String>){
-    example11()
+    example12()
+//    example11()
 //    example10()
 //    example09()
 //    example08()
@@ -25,6 +26,17 @@ fun main(args: Array<String>){
 //    example00()
 }
 
+// 코틀린은 정적 타입 프로그래밍 언어: 일단 변수의 타입이 선언되면 이후에는 다르 타입의 데이터를 저장할 수 없다
+// 타입 변환 type casting(as)
+// 안전 타입 변환(as?)
+// 타입 검사 type check(is)
+private fun example12(){
+    val keyMgr = MainClass() as MainClass
+    val keyMgr2 = MainClass() as? MainClass
+    if (keyMgr is MainClass){
+        println("keyMgr is MainClass")
+    }
+}
 // 늦은 초기화 lateinit
 // lateinit 변수가 초기화되었는지 확인하려면 해당 변수의 isInitialized 속성을 검사
 private fun example11(){
