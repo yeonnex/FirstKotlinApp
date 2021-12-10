@@ -15,15 +15,29 @@ class MainClass {
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
 fun main(args: Array<String>){
-    println("Welcome Kotlin")
-    for (i in 1..8){
-        println("i = $i")
-    }
-    example00()
+    example05()
+    //example00()
 }
 
 private fun example00() {
     println(1 + 2)
     println(1 + 2)
     println(1 + 2)
+}
+
+private fun example05() {
+    val userCount: Int = 10 // Int 타입 어노테이션 지정.
+    val silsu = 2.231 // 생략하면 자동으로 타입추론됨. Double 로 타입 추론이 일어남
+    val companyName = "yeonnex" // String 타입 추론
+
+    // 타입 어노테이션을 지정하여 불변 변수를 선언할 때는 나중에 지정이 가능
+    val bookTitle: String // 선언만 했음. 나중에 초기화 가능
+    val iosBookType = false
+    if (iosBookType) {
+        bookTitle = "iOS App"
+    } else {
+        bookTitle = "Android App"
+    }
+    println(bookTitle)
+    // bookTitle = "iOS App" Error
 }
