@@ -127,7 +127,7 @@ private fun example09(){
     }
     // 또는 이렇게
     secondNumber?.let{
-        val result = firstNumber.times(secondNumber)
+        val result = firstNumber.times(it)
         println(result)
     }
 
