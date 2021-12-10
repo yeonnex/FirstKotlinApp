@@ -64,3 +64,8 @@ private fun example04(){
         }
     }
 }
+
+private fun example05(){
+    val x = 10
+    val y = if (x>9) x else 9
+}
