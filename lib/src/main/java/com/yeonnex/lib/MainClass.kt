@@ -15,7 +15,8 @@ class MainClass {
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
 fun main(args: Array<String>){
-    example08()
+    example09()
+//    example08()
 //    example07()
 //    example06()
 //    example05()
@@ -72,4 +73,29 @@ private fun example08() {
 private fun example07() {
     var username: String? = null
     val length = username!!.length
+}
+
+// null 가능 타입과 let 함수
+// null 가능 타입의 객체에 대해 호출하면 null 가능 타입을 it 라는 null  불가능 변수로 변환
+private fun example09(){
+    val firstNumber = 10
+    val secondNumber: Int? = 20
+
+    // val result = firstNumber.times(secondNumber) 컴파일에러
+    // 널 가능한 변수는 항상 체크를 먼저 해주어야 함
+    if (secondNumber != null){
+        val result = firstNumber.times(secondNumber)
+
+        // val result = firstNumber.times(it)
+        println(result)
+
+    }
+    // 또는 이렇게
+    secondNumber?.let{
+        val result = firstNumber.times(secondNumber)
+        println(result)
+    }
+
+    // 널포인터 익셉션을 방지하기 위해, 즉 안전한 코드를 위해 문법적으로 이렇게 null
+    // 값을 신경써줌. 이게 자바와의 큰 차이
 }
