@@ -14,4 +14,17 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun testLeapYear(){
+        assertEquals(true,isLeapYear(2020))
+        assertEquals(false,isLeapYear(1900))
+        assertEquals(true,isLeapYear(2400))
+    }
+
+    private fun isLeapYear(year: Int): Boolean {
+        if (year % 400 == 0) return true
+        if (year % 100 == 0) return false
+        return year % 4 == 0
+    }
 }

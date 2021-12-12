@@ -1,7 +1,9 @@
 package com.yeonnex.lib
 
-class MainClass {
-
+public class MainClass {
+    public fun printTest(){
+        println("test")
+    }
 }
 
 // JVM : 코틀린 소스코드 -> 바이트코드로 변환 -> JVM이 바이트 코드 실행 -> 콘솔출력
