@@ -19,6 +19,10 @@ public class MainClass {
 // 코틀린 REPL : 작은 코드를 테스트해보고 싶을 때 사용
 // Tools > Kotlin > Kotlin REPL
 // 실행 : Ctrl + Enter
+
+// REPL은 한 줄 단위로 코드를 실행할 때는 편리하지만 긴 코드는 불편하다.
+// 스크래치 파일을 사용하면 긴 코드도 쉽게 테스트 가능!
+// File > New > Scratch File
 fun main(args: Array<String>){
     example12()
 //    example11()
