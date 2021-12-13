@@ -34,8 +34,15 @@ open class BankAccountP{
        accountNumber = number
        accountBalance = balance
     }
+    open fun displayBalance(){
+        println("$accountBalance")
+    }
 }
 // 서브 클래스 기능 확장.
+// 상속 받은 함수 오버라이딩
+//  상속 받은 함수의 새로운 버전을 작성:
+//  함수 시그내쳐(함수명, 매개변수 및 타입, 반환타입) 은 동일하게 하면서 함수 몸체의 실행 코드만 다르게 작성
+//
 class SavingAccount : BankAccountP{
     constructor(number: Int, balance: Double): super(number, balance)
     constructor(number: Int, balance: Double, rate: Double): super(number, balance){
@@ -48,6 +55,11 @@ class SavingAccount : BankAccountP{
         // 이 클래스에는 accountBalance가 없지만, 상속받았기 때문에 이 변수 사용 가능하다
         // 코드 상속 받은 것임. 기존것 + 알파 근데, 인터페이스 상속을 더 권함. 사이드이펙트때문에
         return rate * accountBalance
+    }
+
+    override fun displayBalance(){
+        super.displayBalance() // 부모 클래스의 함수 실행
+        println("Interest rate is $rate")
     }
 }
 
