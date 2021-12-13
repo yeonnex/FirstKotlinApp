@@ -9,15 +9,25 @@ package com.yeonnex.lib
 // 서브 클래스 생성
 // 클래스 상속 관련 코드의 오류나 착오 방지를 위해 부모 클래스에 open 키워드 사용
 
+
+// 하나 이상의 보조 생성자를 갖는 클래스의 경우
+//  서브 클래스 선언에서도 보조 생성자를 구현하고
+//  super 키워드를 사용해서 부모 클래스의 보조 생성자를 호출
+
 open class ParentClass{
     var x: Int = 0
+    constructor(num: Int){
+        x = num
+    }
 }
-class Subclass : ParentClass(){
-
+class Subclass : ParentClass{
+    constructor(num: Int) : super(num){
+        // 서브 클래스 생성자에서 실행할 코드
+    }
 }
 
 fun main(args:Array<String>){
-    val sc = Subclass()
+    val sc = Subclass(0)
     println(sc.x)
     sc.x = 100
     println(sc.x)
