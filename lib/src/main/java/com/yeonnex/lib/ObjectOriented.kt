@@ -12,10 +12,25 @@ package com.yeonnex.lib
 // 클래스에 함수 정의
 // 코틀린의 표준 함수 선언 문법을 사용해서 클래스의 열고 닫는 중괄호{} 내부에 선언
 
+// 클래스의 기본과 보조 생성자
+//  생성자 constructor : 클래스 인스턴스를 생성할 때 초기화 작업을 해야 하는 경우
+// 보조생성자 secondary constructor :
+//  class BankAccount { constructor(...) {초기화 코드}
+
 class BankAccount {
     var accountBalance: Double = 0.0 // 잔액
-    var accountNumber: Int = 0 // 게좌 번호
-
+    var accountNumber: Int = 0 // 계좌 번호
+    var lastName: String = "" // 고객이름
+    constructor(number: Int, balance: Double){
+        // 이름이 다르니 this를 명시적으로 써도 되고 안써도 됨
+        this.accountNumber = number
+        accountBalance = balance
+    }
+    constructor(number: Int, balance: Double, name: String){ // 생성자를 여러 개 만들 수 있음
+        this.accountNumber = number
+        accountBalance = balance
+        lastName = name
+    }
     // 게좌 잔액을 출력하는 함수
     fun displayBalance(){
         println("Number $accountNumber")
@@ -28,7 +43,7 @@ class BankAccount {
 // val account1 = BankAccount() // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가능
 // 클래스 인스턴스가 생성되어 변수를 사용(참조)할 수 있다
 fun main(args:Array<String>){
-    val account1:BankAccount = BankAccount()
-    val account2 = BankAccount()
+    val account1:BankAccount = BankAccount(12345, 100.0)
+    val account2 = BankAccount(12346,100.0,"jang")
     account1.displayBalance()
 }
