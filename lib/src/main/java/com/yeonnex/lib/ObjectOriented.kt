@@ -16,18 +16,15 @@ package com.yeonnex.lib
 //  생성자 constructor : 클래스 인스턴스를 생성할 때 초기화 작업을 해야 하는 경우
 // 보조생성자 secondary constructor :
 //  class BankAccount { constructor(...) {초기화 코드}
+// 기본 생성자 primary constructor :
+//  class BankAccount (val accountNumber: Int, var accountBalance: Double) {}
+//  기본적인 초기화 작업을 수행, 클래스의 헤더에 선언, 클래스의 기본 생성자는 하나만 가질 수 있다
+//  기본 생성자에 선언된 변수는 자동으로 클래스 속성이 된다
+class BankAccount (val accountNumber: Int, var accountBalance: Double) { // 기본 생성자를 쓰면, 속성으로 안만들어도 되기 때문에 코드가 좀 심플해지긴 함
 
-class BankAccount {
-    var accountBalance: Double = 0.0 // 잔액
-    var accountNumber: Int = 0 // 계좌 번호
     var lastName: String = "" // 고객이름
-    constructor(number: Int, balance: Double){
-        // 이름이 다르니 this를 명시적으로 써도 되고 안써도 됨
-        this.accountNumber = number
-        accountBalance = balance
-    }
-    constructor(number: Int, balance: Double, name: String){ // 생성자를 여러 개 만들 수 있음
-        this.accountNumber = number
+
+    constructor(number: Int, balance: Double, name: String) : this(number, balance){ // 기본 생성자 호출!
         accountBalance = balance
         lastName = name
     }
