@@ -26,9 +26,34 @@ class Subclass : ParentClass{
     }
 }
 
+// 부모(상위) 클래스
+open class BankAccountP{
+    var accountNumber: Int = 0
+    var accountBalance: Double = 0.0
+    constructor(number:Int, balance: Double){
+       accountNumber = number
+       accountBalance = balance
+    }
+}
+// 서브 클래스 기능 확장.
+class SavingAccount : BankAccountP{
+    constructor(number: Int, balance: Double): super(number, balance)
+
+    // 이자율과 이자금액 산출함수
+    var rate: Double = 0.02
+    fun calculateInterest(): Double{
+        // 이 클래스에는 accountBalance가 없지만, 상속받았기 때문에 이 변수 사용 가능하다
+        // 코드 상속 받은 것임. 기존것 + 알파 근데, 인터페이스 상속을 더 권함. 사이드이펙트때문에
+        return rate * accountBalance
+    }
+}
+
 fun main(args:Array<String>){
     val sc = Subclass(0)
     println(sc.x)
     sc.x = 100
     println(sc.x)
+
+    val sa = SavingAccount(12345, 1000.0)
+    println(sa.calculateInterest())
 }
