@@ -53,6 +53,27 @@ class BankAccount (val accountNumber: Int, var accountBalance: Double) { // 기�
     }
 }
 
+
+// 중첩 클래스와 내부 클래스
+//   중첩 클래스 nested class : 클래스 내부에 다른 클래스를 포함
+//     내부 클래스는 외곽 클래스의 속성을 사용할 수 없다
+//   내부 클래스 inner class : 클래스 내부에 다른 클래스를 포함
+//     inner 키워드를 지정하여 내부 클래스에서 외곽 클래스 속성에 접근 가능
+class ClassA {
+    var cnt: Int = 10
+
+    // 중첩 클래스
+    class ClassB {
+//        val result = cnt + 20  // cnt 속성 접근 불가(오류)
+    }
+
+    // 내부 클래스
+    inner class ClassC {
+        val result = cnt + 20   // cnt 속성 접근 가능
+    }
+}
+
+
 // 클래스 인스턴스 생성하고 초기화
 // 클래스로 뭔가를 하려면 인스턴스를 생성, 생성되는 인스턴스의 참조를 저장할 변수를 선언
 // val account1 = BankAccount() // 변수의 타입을 코틀린 컴파일러가 추론, 생략 가능
@@ -69,4 +90,30 @@ fun main(args:Array<String>){
     account1.balanceLessFees = 200.0
     account1.displayBalance()
 
+    // 동반 객체 companion object
+    // 객체 안만들어도 클래스 이름만으로도 접근 가능
+    println(Myclass.counter)
+    Myclass.counterUp()
+    val instanceA = Myclass()
+    instanceA.showCount()
+    val instanceB = Myclass()
+    Myclass.counterUp()
+    instanceA.showCount()
+
+}
+
+// 동반 객체 companion object
+// 자신을 포함하는 클래스의 모든 인스턴스가 공유하는 속성과 함수를 포함
+// 인스턴스를 생성하지 않고 클래스 이름으로 사용이 가능
+// 동반 객체는 하나만 생성되기 때문에 모든 인스턴스는 같은 동반 객체를 공유한다
+class Myclass {
+    fun showCount(){
+        println("counter = $counter")
+    }
+    companion object{
+        var counter = 0
+        fun counterUp(){
+            counter++
+        }
+    }
 }
