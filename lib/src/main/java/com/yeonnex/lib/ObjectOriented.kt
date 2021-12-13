@@ -20,9 +20,27 @@ package com.yeonnex.lib
 //  class BankAccount (val accountNumber: Int, var accountBalance: Double) {}
 //  기본적인 초기화 작업을 수행, 클래스의 헤더에 선언, 클래스의 기본 생성자는 하나만 가질 수 있다
 //  기본 생성자에 선언된 변수는 자동으로 클래스 속성이 된다
-class BankAccount (val accountNumber: Int, var accountBalance: Double) { // 기본 생성자를 쓰면, 속성으로 안만들어도 되기 때문에 코드가 좀 심플해지긴 함
 
+// 초기화 블록 initializer block
+//  기본 생성자는 실행코드를 포함할 수 없으므로
+//  기본 생성자 다음에 자동 실행
+//  (단, 기본 생성자가 없고 보조 생성자만 있을 때는 실행되지 않는다)
+
+// 클래스 커스텀 접근자
+//  속성 기본 접근자 : 속성값을 가져오거나 설정하는 기본 제공 접근자
+//  속성 커스텀 접근자 : 속성이 반환되거나 설정되기 전에 원하는 로직을 실행
+//      각 속성에 getter 나 setter 를 작성하여 구현
+//      setter 를 선언하면 속성값을 변경한다는 것이므로 해당 속성을 val이 아닌 var 로 선언해야함
+class BankAccount (val accountNumber: Int, var accountBalance: Double) { // 기본 생성자를 쓰면, 속성으로 안만들어도 되기 때문에 코드가 좀 심플해지긴 함
+    init {
+        // 기본 생성자를 썼었을 때, 초기화하는 블록
+    }
     var lastName: String = "" // 고객이름
+    val fees: Double = 25.00
+
+    var balanceLessFees: Double
+        get() { return accountBalance - fees}
+        set(value) {accountBalance = value - fees}
 
     constructor(number: Int, balance: Double, name: String) : this(number, balance){ // 기본 생성자 호출!
         accountBalance = balance
@@ -43,4 +61,12 @@ fun main(args:Array<String>){
     val account1:BankAccount = BankAccount(12345, 100.0)
     val account2 = BankAccount(12346,100.0,"jang")
     account1.displayBalance()
+
+    account1.accountBalance = 1000.0
+    val balance = account1.accountBalance
+    account1.displayBalance()
+
+    account1.balanceLessFees = 200.0
+    account1.displayBalance()
+
 }
