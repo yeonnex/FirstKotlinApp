@@ -16,6 +16,9 @@ public class MainClass {
 // 쓰레드, IO, 네트워크
 //  LIBRARY : swing, JavaFX(Win), Spring(Web), Android(mobile)
 
+// 코틀린 REPL : 작은 코드를 테스트해보고 싶을 때 사용
+// Tools > Kotlin > Kotlin REPL
+// 실행 : Ctrl + Enter
 fun main(args: Array<String>){
     example12()
 //    example11()
