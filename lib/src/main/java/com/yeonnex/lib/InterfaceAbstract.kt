@@ -13,11 +13,17 @@ package com.yeonnex.lib
 //  속성은 선언만 하고 초기화하는 코드가 없고,
 //  함수는 헤더만 선언하고 구현이 없는 추상함수를 사용(시그내쳐만)
 //  open 을 굳이 명시적으로 안붙여도 됨!
+//  인스턴스를 생성할 수 없다
 interface IAnt {
     var name: String
     fun place(): String
     fun show(): String
 }
+
+// 추상 클래스 정의와 구현
+//  abstract 키워드를 class 키워드 앞에 사용
+//  코드에 순서가 필요할 때 씀
+//  그렇지 않은 경우, 인터페이스를 씀
 
 open class Ant : IAnt { // IAnt에서 정의된 것들은, 무조건 Ant 에서 implement 해주어야 한다. 구현을 강제화할 수 있음
     override var name = "Ant"
