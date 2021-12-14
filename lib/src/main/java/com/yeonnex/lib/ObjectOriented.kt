@@ -32,6 +32,7 @@ package com.yeonnex.lib
 //      각 속성에 getter 나 setter 를 작성하여 구현
 //      setter 를 선언하면 속성값을 변경한다는 것이므로 해당 속성을 val이 아닌 var 로 선언해야함
 class BankAccount (val accountNumber: Int, var accountBalance: Double) { // 기본 생성자를 쓰면, 속성으로 안만들어도 되기 때문에 코드가 좀 심플해지긴 함
+    // 생성자 인자임과 동시에 클래스 변수이기 때문에 init영역의 초기화가 없어도 외부에서 받아온 값을 그대로 쓸 수 있음
     init {
         // 기본 생성자를 썼었을 때, 초기화하는 블록
     }

@@ -13,10 +13,10 @@ class Person (val name:String) {
 
 }
 
-class Point2D(var x: Int, var y: Int) {
+open class Point2D(var x: Int, var y: Int) {
 
     // 커스텀 접근이 가능한 속성 info
-    val info: String
+    open val info: String
         get() {return "Point2D $x , $y"}
 }
 
