@@ -29,7 +29,15 @@ class MainActivity : AppCompatActivity() {
         }
         // 바로 람다식으로!
         btnCall.setOnClickListener{
-            val intent: Intent = Intent(Intent.ACTION_VIEW, Uri.parse("tel:010-1111-2222")) // 사진 리소스 등 모든걸 URI라고 함
+            val intent: Intent = Intent(Intent.ACTION_VIEW,
+                Uri.parse("tel:010-1111-2222")) // 사진 리소스 등 모든걸 URI라고 함
+            startActivity(intent)
+        }
+
+        // 바로 람다식으로!
+        btnHome.setOnClickListener {
+            val intent: Intent = Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://www.kakaocorp.com/")) // 사진 리소스 등 모든걸 URI라고 함
             startActivity(intent)
         }
     }
