@@ -42,14 +42,41 @@ class EventActivity : AppCompatActivity() {
 //                TODO("Not yet implemented")
 //            }
 //        })
+        binding.tvStatus.text = "touch log 1"
+        binding.tvStatus2.text = "touch log 2"
 
         binding.activityMain.setOnTouchListener{v: View, m: MotionEvent ->
-            val pointerCount = m.pointerCount
-            val pointerId = m.getPointerId(0)
-            binding.tvStatus.text = "pointerCount = $pointerCount, pointerId = $pointerId"
-            Log.d("Event...","pointerCount = $pointerCount, pointerId = $pointerId" )
+            handleTouch(m)
             true // 이벤트 소비 완료!
         }
 
+    }
+
+    private fun handleTouch(m: MotionEvent) {
+        val pointerCount = m.pointerCount
+        val pointerId = m.getPointerId(0)
+//        binding.tvStatus.text = "pointerCount = $pointerCount, pointerId = $pointerId"
+//        Log.d("Event...", "pointerCount = $pointerCount, pointerId = $pointerId")
+        for (i in 0 until pointerCount){
+            val x = m.getX(i)
+            val y = m.getY(i)
+            val id = m.getPointerId(i)
+            val action = m.actionMasked
+            val actionIndex = m.actionIndex
+            var actionString: String
+            when (action){
+                MotionEvent.ACTION_DOWN -> actionString = "DOWN"
+                MotionEvent.ACTION_UP -> actionString = "UP"
+                MotionEvent.ACTION_POINTER_DOWN -> actionString = "POINTER_DOWN"
+                MotionEvent.ACTION_POINTER_UP -> actionString = "POINTER_UP"
+                MotionEvent.ACTION_MOVE -> actionString = "MOVE"
+                else -> actionString = ""
+            }
+            val touchStatus = "Action: $actionString, Index: $actionIndex, id = $id, x=$x, y=$y"
+            Log.d("Event...", touchStatus)
+
+            if (id == 0) binding.tvStatus.text = touchStatus
+            else binding.tvStatus2.text = touchStatus
+        }
     }
 }
