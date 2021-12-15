@@ -7,7 +7,7 @@ package com.yeonnex.lib
 
 fun main(args: Array<String>){
     listCollection()
-
+    setCollection()
 
 }
 
@@ -56,3 +56,26 @@ private fun listCollection() {
     println("$a $b $c")
     val (d, _, e) = list // can use "_" if don't want destructure
 }
+
+fun setCollection(){
+    val set = setOf("one", "two", "three") // 읽기 전용 Set
+    println(set.contains("one"))
+    // println(set[2]) set 이라 안됨
+    println(set.elementAt(2))
+
+    val mset = mutableSetOf("one", "two", "three")
+    mset.add("4"); println(mset)
+
+    // 반복 처리
+    for (p in set) print("$p.."); println()
+
+    mset.clear()
+
+    // List -> Set
+    println(listOf("one", "two", "two").toSet())
+
+    // List -> Set -> List
+    println(listOf("one", "two", "two").toSet().toList())
+
+}
+
