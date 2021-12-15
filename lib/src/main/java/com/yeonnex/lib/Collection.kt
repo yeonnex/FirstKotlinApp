@@ -3,11 +3,44 @@ package com.yeonnex.lib
 // kotlin collection
 // List, Set, Map
 
-// List
 
 fun main(args: Array<String>){
-    listCollection()
-    setCollection()
+    // listCollection()
+    // setCollection()
+    mapCollection()
+
+}
+
+// Map
+// key 와 이 키에 대응되는 값 value 의 쌍으로 저장
+fun mapCollection(){
+    val map = mapOf("one" to 1.0, "two" to 2.0, "three" to 3.0) // 읽기 전용 Map 생성
+    val a = mapOf(Pair("one",1.0), Pair("two", 2.0), Pair("three", 3.0))
+
+    val mmap = mutableMapOf("one" to 1.0, "two" to 2.0, "three" to 3.0) // 변경 가능 Map
+    println(mmap["one"])
+    println(mmap.getValue("one"))
+    println(mmap.getOrElse("1"){"No search"})
+    println(mmap.getOrDefault("1", 0))
+
+    mmap += "four" to 4.0; println(mmap)
+    mmap += "four" to 5.0; println(mmap) // 중복된 키는 값 업데이트
+    mmap -= "four"; println(mmap)
+    mmap["1"] = 1.0; // add와 같은 기능. 추가됨
+    mmap.put("2", 2.0); println(mmap) // 이렇게도 쓸 수 있지만 위의 방법이 가장 간결함
+    mmap.putAll(listOf("3" to 3.0, "4" to 4.0)); println(mmap)
+
+    // 반복 처리
+    mmap.forEach{ (k,v) -> print("$k=$v..")}; println()
+
+    // 키가 없으면 항목을 추가하고, 있으면 기존 값을 반환
+    println(mmap.getOrPut("5"){5.0}); println(mmap)
+    println(mmap.getOrPut("5"){10.0}); println(mmap) // 업데이트가 되지 않음...!
+
+    // 지정한 키의 항목을 제외한 새로운 Map을 반환
+    val b = mmap - "5"
+    println(b); println(mmap) // 새로운 b map생성 , 원본 mmap은 그대로
+    mmap.clear()
 
 }
 
