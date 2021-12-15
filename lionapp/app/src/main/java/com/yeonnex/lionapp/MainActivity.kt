@@ -28,7 +28,6 @@ import com.yeonnex.lionapp.databinding.ActivityMainBinding
 //      }
 //   }
 // 뷰 바인딩을 사용하도록 변환
-
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
@@ -63,3 +62,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
