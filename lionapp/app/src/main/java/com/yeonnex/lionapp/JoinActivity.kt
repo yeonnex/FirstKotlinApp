@@ -19,9 +19,23 @@ class JoinActivity : AppCompatActivity() {
 
         binding.btnOK.setOnClickListener{
             val id = binding.etID.text.toString()
-            val data = Intent()
-            data.putExtra("returnData", id)
-            setResult(RESULT_OK, data)
+            val pw = binding.etPW.text.toString()
+            val repw = binding.etRePW.text.toString()
+
+            if (LoginActivity.members.containsKey(id) && id != "")
+                binding.tvMsg.text = "이미 존재하는 아이디입니다."
+            else if (pw != Repw || pw == "")
+                binding.tvMsg.text = "패스워드가 다르거나 없습니다."
+            else {
+                LoginActivity.members += id to pw
+                val data = Intent()
+                data.putExtra("returnData", id)
+                setResult(RESULT_OK, data)
+                super.finish()
+            }
+
+        }
+        binding.btnCancel.setOnClickListener {
             super.finish()
         }
     }
