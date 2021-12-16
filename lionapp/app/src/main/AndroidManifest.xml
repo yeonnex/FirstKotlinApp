@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LionApp">
         <activity
-            android:name=".EventActivity"
-            android:exported="true">
+            android:name=".GestureActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,13 +19,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".EventActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
             android:name=".Mission04Activity"
             android:exported="false" />
         <activity
             android:name=".PhotoActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".Mission03Activity"
             android:exported="false" />
