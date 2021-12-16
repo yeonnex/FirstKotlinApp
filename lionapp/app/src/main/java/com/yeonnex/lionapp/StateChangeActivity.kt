@@ -9,6 +9,8 @@ import com.yeonnex.lionapp.databinding.ActivityStateChangeBinding
 class StateChangeActivity : AppCompatActivity() {
     val TAG = "StateChange"
     private lateinit var binding :ActivityStateChangeBinding
+    val sharedPreferences = getSharedPreferences("lion", 0)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_state_change)
@@ -47,12 +49,16 @@ class StateChangeActivity : AppCompatActivity() {
 
         val userText = binding.editText.text.toString()
         outState.putCharSequence("savedText", userText)
+
+        val editor = sharedPreferences.edit()
+        editor.putString("savedText", userText)
+        editor.apply() // 세이브! 커밋!
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         Log.i(TAG, "onRestoreInstanceState")
-        val userText = savedInstanceState.getCharSequence("savedText")
+        val userText = sharedPrefences.getString("savedText", "")
         binding.editText.setText(userText)
     }
 }
