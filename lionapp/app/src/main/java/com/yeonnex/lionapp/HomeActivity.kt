@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import com.oz10.lionapp.MainActivity
 import com.yeonnex.lionapp.databinding.ActivityHomeBinding
+import kotlin.math.roundToInt
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding:ActivityHomeBinding
@@ -34,6 +35,13 @@ class HomeActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT,
         )
+
+        // 코드로 간격 조정
+        val dm = resources.displayMetrics
+//        val size = Math.round(10 * dm.density)
+        val size = (10 * dm.density).roundToInt() // 코틀린식
+
+        params.topMargin = size
 
         for (key in buttons.keys){
             val btn = Button(this)
